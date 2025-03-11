@@ -38,27 +38,55 @@ function addListeners() {
         .addEventListener('click', function () {
             const block = document.getElementById('moveAndHideBlock');
             moveAndHide = animaster().moveAndHide(block, 10000);
-        })
+        });
 
     document.getElementById('heartBeatingPlay')
         .addEventListener('click', function () {
             const block = document.getElementById('heartBeatingBlock');
             heartbeatAnimation = animaster().heartBeating(block);
-        })
+        });
 
     document.getElementById('heartBeatingStop')
         .addEventListener('click', function () {
             if (heartbeatAnimation) {
                 heartbeatAnimation.stop();
             }
-        })
+        });
 
     document.getElementById('moveAndHideReset')
         .addEventListener('click', function () {
             if (moveAndHide) {
                 moveAndHide.reset();
             }
-        })
+        });
+
+    document.getElementById('customAnimation1Play')
+        .addEventListener('click', function () {
+            const block = document.getElementById('customAnimation1Block');
+            const customAnimation = animaster()
+                .addMove(200, {x: 40, y: 40})
+                .addScale(800, 1.3)
+                .addMove(200, {x: 80, y: 0})
+                .addScale(800, 1)
+                .addMove(200, {x: 40, y: -40})
+                .addScale(800, 0.7)
+                .addMove(200, {x: 0, y: 0})
+                .addScale(800, 1);
+            customAnimation.play(block);
+        });
+
+    document.getElementById('customAnimation2Play')
+        .addEventListener('click', function () {
+            const block = document.getElementById('customAnimation2Block');
+            const customAnimation2 = animaster()
+                .addFadeOut(500)
+                .addMove(200, {x: 40, y: 40})
+                .addFadeIn(500)
+                .addScale(300, 2)
+                .addScale(300, 1)
+            customAnimation2.play(block);
+        });
+
 }
 
 function animaster() {
